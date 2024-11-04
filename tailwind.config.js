@@ -10,8 +10,8 @@ export default withMT({
   theme: {
     extend: {
       backgroundImage: {
-        "intro-bg": "url('./public/hero-1.png')",
-        "seperator-bg": "url('./public/3.jpg')",
+        "intro-bg": "url('./img/hero/hero-1.png')",
+        "seperator-bg": "url('./img/seperator/3.jpg')",
       },
     },
   },

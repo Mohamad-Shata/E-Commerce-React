@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/user_components/Footer";
-import { AdminNavbar } from "../components/Admin/AdminNavbar";
+import { AdminNavbar } from "../components/admin/AdminNavbar";
 
 const AdminLayout = ({ children }) => {
   const navigate = useNavigate();

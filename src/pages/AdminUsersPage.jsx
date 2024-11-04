@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
-import { UsersTable } from "../components/Admin/UsersTable";
-import { AddUserDialog } from "../components/Admin/AddUserDialog";
+import { UsersTable } from "../components/admin/UsersTable";
+import { AddUserDialog } from "../components/admin/AddUserDialog";
 
 export default function AdminUsersPage() {
   return (

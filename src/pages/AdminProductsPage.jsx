@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
-import { AddProductDialog } from "../components/Admin/AddProductDialog";
-import { ProductsTable } from "../components/Admin/ProductsTable";
+import { AddProductDialog } from "../components/admin/AddProductDialog";
+import { ProductsTable } from "../components/admin/ProductsTable";
 
 export default function AdminProductsPage() {
   return (

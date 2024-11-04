@@ -60,7 +60,7 @@ export function Footer() {
               href="https://material-tailwind.com/"
               className=" hover:text-blue-600 text-gray-300"
             >
-              Youssef Hossam
+              Mohamed Essam
             </a>
             . All Rights Reserved.
           </Typography>

@@ -200,9 +200,10 @@ function NavList() {
 }
 
 export function UserNavbar() {
-  const { logged, currentUser } = useSelector((state) => state.users);
+  const { logged } = useSelector((state) => state.users);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [mode, setMode] = useState(localStorage.getItem("theme") || "light");
+  const { currentUser } = useSelector((state) => state.users);
   const navigate = useNavigate();
 
   useEffect(() => {

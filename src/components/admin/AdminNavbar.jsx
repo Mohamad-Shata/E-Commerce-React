@@ -159,7 +159,7 @@ function NavList() {
   );
 }
 
-export default function AdminNavbar() {
+export function AdminNavbar() {
   const { logged } = useSelector((state) => state.users);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [mode, setMode] = useState(localStorage.getItem("theme") || "light");

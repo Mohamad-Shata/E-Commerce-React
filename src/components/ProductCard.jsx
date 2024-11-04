@@ -7,60 +7,40 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../redux/reducers/usersSlice";
 
 export function ProductCard({ productProps }) {
-  const { name, description, imgUrl, rating, price, id } = productProps;
+  const { id, name, description, imgUrl, rating, price } = productProps;
   const { rate } = rating;
   const [favoriteProduct, setFavoriteProduct] = useState("white");
   const { logged, currentUser } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [updatedUser, setUpdatedUser] = useState({
-    name: "",
-    email: "",
-    gender: "",
-    password: "",
-    id: "",
-    role: "",
-    cart: [],
-  });
-
-  useEffect(() => {
-    if (currentUser) {
-      setUpdatedUser({
-        name: currentUser.name || "",
-        email: currentUser.email || "",
-        gender: currentUser.gender || "",
-        password: currentUser.password || "",
-        id: currentUser.id || "",
-        role: currentUser.role || "",
-        cart: currentUser.cart || "",
-      });
-    }
-  }, [currentUser]);
 
   const handleAddToCart = () => {
     if (!logged) {
       navigate("/login");
     } else {
-      let cartCopy = [...updatedUser.cart];
-      cartCopy.push(id);
-
-      setUpdatedUser((prevState) => {
-        const newUser = {
-          ...prevState,
-          cart: cartCopy,
-        };
-
-        dispatch(updateUser(newUser));
-
-        return newUser;
+      let isFound = false;
+      let newCart = currentUser.cart.map((productCart) => {
+        if (productCart.productId === id) {
+          isFound = true;
+          return { ...productCart, count: productCart.count + 1 };
+        }
+        return productCart;
       });
+
+      if (!isFound) {
+        newCart.push({ productId: id, count: 1 });
+      }
+
+      const updatedUser = { ...currentUser, cart: newCart };
+
+      dispatch(updateUser(updatedUser));
     }
   };
 
